@@ -1,5 +1,8 @@
 const bcrypt = require("bcryptjs");
 const express = require('express');
+
+const { User} = require("./models/index");
+
 const app = express();
 const routes = require ("./routes");
 
@@ -12,6 +15,6 @@ app.listen(3000,function(){
     console.log("Server is running..")
 });
 
-const { User} = require("./models/index");
+
 
 
