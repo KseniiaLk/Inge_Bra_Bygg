@@ -1,7 +1,9 @@
 const { Router }= require('express');
-const user = new Router ();
 const userController = require("../controllers/userController");
 const Auth = require('../middleware/auth');
+
+const user = new Router ();
+
 
 user.post("/auth", userController.auth);
 user.get("/", Auth.loggin, userController.auth);

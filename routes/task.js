@@ -1,9 +1,9 @@
 const { Router } = require('express')
-const taskController = require('../controllers/taskController')
+const TaskController = require('../controllers/taskController')
 
 const router = new Router()
 
-const controller = new taskController()
+const controller = new TaskController()
 
 router.get('/', controller.getAll)
 router.get('/:id', controller.getOne)
