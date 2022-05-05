@@ -47,4 +47,4 @@ class TaskController{
     }
 }
 
-module.exports = taskController
+module.exports = TaskController
