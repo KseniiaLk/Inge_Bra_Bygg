@@ -13,6 +13,13 @@ Task.init({
         primaryKey: true,
         autoIncrement: true,
     },
+    title: DataTypes.TEXT,
+    task_status: {
+        type: DataTypes.TEXT,
+        enum: ["Pending", "Done"],
+        defaultValue: "Pending",
+        allowNull: false,
+    },
     message: DataTypes.TEXT,
     images: DataTypes.TEXT // Detta måste fixas, bild istället för text
 }, { sequelize} )
