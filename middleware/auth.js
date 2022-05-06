@@ -3,7 +3,7 @@ const jwt = require('jsonwebtoken')
 require('dotenv').config({path: '../config/.env'})
 
 module.exports = {
-  user: (req, res, next) => {
+  customer: (req, res, next) => {
     try{
       const token = req.header("Authorization").replace("Bearer ", "")
       const user = jwt.verify(token, process.env.JWT_SECRET)

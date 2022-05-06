@@ -18,11 +18,13 @@ User.sync()
         {
             username: 'Alex',
             password_hash: hashUserOne,
+            user_email: "hgkls@al.se",
             role: 'admin',
         },
         {
             username: 'Ksenia',
             password_hash: hashUserTwo,
+            user_email: "hgkls@ks.se",
             role: 'admin',
         }
     ])
