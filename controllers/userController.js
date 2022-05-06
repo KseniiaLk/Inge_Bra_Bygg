@@ -19,6 +19,12 @@ class UserController{
         res.json(users)
     }
 
+    async getMe(req, res, next){
+        const id = req.params.id
+        const user = await User.findOne({where: {id: id}})
+        res.json(user)
+    }
+
     async create(req, res, next){
         const { message, images } = req.body
         const user = await User.create({message, images})

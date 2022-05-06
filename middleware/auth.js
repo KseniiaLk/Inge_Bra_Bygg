@@ -4,18 +4,11 @@ const jwt = require('jsonwebtoken')
 
 module.exports = {
   user: (req, res, next) => {
-    if(!req.headers.authorization){
-      return res.status(401).json({error: 'Please login in'})
-    }
     try{
-      const token = req.headers.authorization.replace("Bearer ", "")
-      const data = jwt.verify(token, process.env.JWT_SECRET)
+      const token = req.header("Authorization").replace("Bearer ", "")
+      const user = jwt.verify(token, process.env.JWT_SECRET)
 
-      req.user = {
-        username: data.username,
-        userId: data.userId
-      }
-  
+      req.user = user
       next()
       
     }catch(error){
@@ -31,17 +24,14 @@ module.exports = {
       return res.status(401).json({error: 'Please login in'})
     }
     try{
-      const token = req.headers.authorization.replace("Bearer ", "")
-      const data = jwt.verify(token, process.env.JWT_SECRET)
+      const token = req.header("Authorization").replace("Bearer ", "")
+      const user = jwt.verify(token, process.env.JWT_SECRET)
       
-      if(data.role !== 'admin'){
+      if(user.role !== 'admin'){
         throw new Error('Forbidden')
       }
 
-      req.user = {
-        username: data.username,
-        userId: data.userId
-      }
+      req.user = user
   
       next()
       
