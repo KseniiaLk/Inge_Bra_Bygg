@@ -27,10 +27,10 @@ User.init({
         allowNull: false,
     },
     user_email: {
-        type: DataTypes.TEXT,
+        type: DataTypes.STRING,
         allowNull: false,
-        unique: true,
-    },
+        UNIQUE: true
+      },
     password_hash: {
         type: DataTypes.TEXT,
         allowNull: false,
@@ -38,7 +38,7 @@ User.init({
     role: {
         type: DataTypes.TEXT,
         enum: ["admin", "customer"],
-        defaultValue: "customer",
+        defaultValue: "Customer",
         allowNull: false
     },
 },
