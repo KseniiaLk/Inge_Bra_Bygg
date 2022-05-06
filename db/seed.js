@@ -1,10 +1,12 @@
 const { Sequelize } = require('sequelize')
 const { Task, User } = require('../models/index.js')
-
 const bcrypt = require('bcryptjs')
 
-const hashUserOne = bcrypt.hashSync('Alex', 10)
-const hashUserTwo = bcrypt.hashSync('Ksenia', 10)
+require('dotenv').config({path: '../config/.env'})
+
+
+const hashUserOne = bcrypt.hashSync("Alex", 10) //process.env.PASSWORD_ONE funkar ej
+const hashUserTwo = bcrypt.hashSync("Ksenia", 10) //process.env.PASSWORD_TWO funkar ej
 
 const sequelize = new Sequelize({
     dialect: 'sqlite',
@@ -16,11 +18,13 @@ User.sync()
     return User.bulkCreate([
         {
             username: 'Alex',
+            user_email: "hgkls@al.se",
             password_hash: hashUserOne,
             role: 'admin',
         },
         {
             username: 'Ksenia',
+            user_email: "hgkls@ks.se",
             password_hash: hashUserTwo,
             role: 'admin',
         }
