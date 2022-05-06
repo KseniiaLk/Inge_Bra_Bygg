@@ -1,6 +1,7 @@
 const { Sequelize, Model, DataTypes } = require('sequelize')
 const bcrypt = require('bcryptjs')
-
+const jwt = require("jsonwebtoken");
+require("dotenv").config();
 module.exports = database => {
     class User extends Model{
         static async authenticate(username, password){
@@ -25,12 +26,19 @@ User.init({
         type: DataTypes.TEXT,
         allowNull: false,
     },
+    user_email: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        UNIQUE: true
+      },
     password_hash: {
         type: DataTypes.TEXT,
         allowNull: false,
     },
     role: {
         type: DataTypes.TEXT,
+        enum: ["admin", "customer"],
+        defaultValue: "Customer",
         allowNull: false
     },
 },
