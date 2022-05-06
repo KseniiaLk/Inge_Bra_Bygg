@@ -1,6 +1,6 @@
 //Kod fråm David, kommer att behöva ändras
-
 const jwt = require('jsonwebtoken')
+require('dotenv').config({path: '../config/.env'})
 
 module.exports = {
   user: (req, res, next) => {

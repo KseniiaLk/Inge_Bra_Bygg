@@ -1,10 +1,11 @@
 const { Sequelize } = require('sequelize')
 const { Task, User } = require('../models/index.js')
+require('dotenv').config({path: '../config/.env'})
 
 const bcrypt = require('bcryptjs')
 
-const hashUserOne = bcrypt.hashSync('Alex', 10)
-const hashUserTwo = bcrypt.hashSync('Ksenia', 10)
+const hashUserOne = bcrypt.hashSync(process.env.PASSWORD_ONE, 10)
+const hashUserTwo = bcrypt.hashSync(process.env.PASSWORD_TWO, 10)
 
 const sequelize = new Sequelize({
     dialect: 'sqlite',
