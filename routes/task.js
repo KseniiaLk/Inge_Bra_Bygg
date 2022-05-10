@@ -15,12 +15,12 @@ router.patch('/:id',Auth.worker, TaskController.update) //markera task som klart
 
 //Customer
 //Kunder (client) ska kunna se sina ärenden och skriva meddelanden på sina ärenden.
-router.get('/', Auth.customer, TaskController.getAll) //se ärenden
+router.get('/', Auth.customer, TaskController.getAll) // getAll ska inte fungera för customers
 router.patch('/:id',Auth.customer, TaskController.update) //skriva meddelanden på ärenden
 
-//Alla endpints
+//Alla endpoints
 /*
-router.get('/', Auth.user,TaskController.getTasks)
+router.get('/', Auth.user,TaskController.getTasks) //komma åt oavsett vilken roll man har, vara INLOGGAD!!
 router.post('/:id',Auth.user,TaskController.createTask)
 router.patch('/:id',Auth.user, TaskController.updateTask)
 router.delete('/:id',Auth.user, TaskController.deleteTask)

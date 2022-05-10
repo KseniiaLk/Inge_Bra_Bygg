@@ -10,6 +10,7 @@ module.exports = {
       password: req.body.password_hash
     }
     const token = jwt.sign(payload, process.env.JWT_SECRET_TOKEN)
+    //skicka token till db och sedan tillbaka!
     res.json({token, payload})
   },
 };
