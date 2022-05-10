@@ -8,7 +8,7 @@ const controller = new UserController()
 
 //Admin
 //Admin ska kunna skapa nya konton och kunna radera resurser.
-router.post("/", Auth.admin,UserController.createUser);
+router.post("/", Auth.admin, controller.create);
 
 //Worker
 //Arbetare ( worker ) ska kunna skapa ärenden kopplade till kunder, 

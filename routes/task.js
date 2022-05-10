@@ -1,24 +1,24 @@
 const { Router } = require('express')
 const TaskController = require('../controllers/taskController')
-const Auth = require('../middlewares/auth');
+const Auth = require('../middleware/auth');
 const router = new Router()
 
 const controller = new TaskController()
 
 //Admin
 //Admin ska kunna skapa nya konton och kunna radera resurser.
-router.delete('/:id',Auth.admin, TaskController.deleteTask) //radera resurser
+router.delete('/:id',Auth.admin, controller.delete) //radera resurser
 
 //Worker
 //Arbetare ( worker ) ska kunna skapa ärenden kopplade till kunder, 
 //skriva meddelanden på ärenden, ladda upp en bild kopplat till ärendet och markera ärenden som klart.
-router.post('/:id',Auth.worker,TaskController.createTask) //skapa ärenden
-router.patch('/:id',Auth.worker, TaskController.updateTask) //markera task som klart
+router.post('/:id',Auth.worker, controller.create) //skapa ärenden
+router.patch('/:id',Auth.worker, controller.update) //markera task som klart
 
 //Customer
 //Kunder (client) ska kunna se sina ärenden och skriva meddelanden på sina ärenden.
-router.get('/', Auth.customer,TaskController.getTasks) //se ärenden
-router.patch('/:id',Auth.customer, TaskController.updateTask) //skriva meddelanden på ärenden
+router.get('/', Auth.customer, controller.getAll) //se ärenden
+router.patch('/:id',Auth.customer, controller.update) //skriva meddelanden på ärenden
 
 //Alla endpints
 /*
