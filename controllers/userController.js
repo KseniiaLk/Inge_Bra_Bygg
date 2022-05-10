@@ -26,7 +26,7 @@ module.exports = {
     },
 
     async create(req, res, next){
-        const { message, images } = req.body
+        const { username, password_hash } = req.body
         const user = await User.create({username, password_hash})
         res.status(201).json(user)
     },
