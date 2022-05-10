@@ -11,7 +11,7 @@ const router = new Router();
 //Admin
 //Admin ska kunna skapa nya konton och kunna radera resurser.
 router.post('/authenticate', AuthController.authenticate) //Login
-router.post('/', Auth.admin, UserController.create);
+router.post('/createuser', Auth.admin, UserController.create);
 
 //Worker
 //Arbetare ( worker ) ska kunna skapa ärenden kopplade till kunder, 
