@@ -2,7 +2,12 @@ const { Sequelize, Model, DataTypes } = require('sequelize')
 const bcrypt = require('bcryptjs')
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
-module.exports = database => {
+
+const sequelize = new Sequelize({
+    dialect: 'sqlite',
+    storage: './db/dbfile.sqlite'
+})
+
     class User extends Model{
         static async authenticate(username, password){
             const user = await User.findOne({where: {username}})
@@ -43,7 +48,7 @@ User.init({
     },
 },
 {
-    sequelize: database,
+    sequelize: sequelize,
     modelName: 'User',
     hooks: {
         beforeCreate(instance, options){
@@ -53,6 +58,4 @@ User.init({
 }
 )
 
-return User 
-
-}
+module.exports = User
