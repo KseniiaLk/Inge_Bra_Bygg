@@ -1,10 +1,13 @@
 const User = require("../models/User");
+const jwt = require('jsonwebtoken')
 
 module.exports = {
   async authenticate(req, res) {
-    console.log("TEST CONSOLE LOG")
-    const token = await User.authenticate(req.body.username, req.body.password_hash);
-    console.log(token)
+    const user = await User.authenticate(req.body.username, req.body.password_hash);
+    console.log(user)
+    const token = jwt.sign({user}, `${process.env.JWT_SECRET_TOKEN}`, {
+      expiresIn: "1h",
+    })
     res.json(token);
   },
 };
