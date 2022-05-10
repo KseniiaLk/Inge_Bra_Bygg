@@ -9,7 +9,7 @@ module.exports = {
     }
     try{
       const token = req.header("Authorization").replace("Bearer ", "")
-      const user = jwt.verify(token, process.env.JWT_SECRET_CUSTOMER)
+      const user = jwt.verify(token, process.env.JWT_SECRET_TOKEN)
 
       if(user.role !== 'customer'){
         throw new Error('Forbidden')
@@ -33,7 +33,7 @@ module.exports = {
         try{
         const token = req.header("Authorization").replace("Bearer ", "")
         console.log("Token is: ", token)
-        const user = jwt.verify(token, process.env.JWT_SECRET_ADMIN)
+        const user = jwt.verify({token}, process.env.JWT_SECRET_TOKEN)
         console.log("User is: ", user)
         if(user.role !== 'admin'){
             throw new Error('Forbidden')
@@ -57,7 +57,7 @@ module.exports = {
     }
     try{
         const token = req.header("Authorization").replace("Bearer ", "")
-        const user = jwt.verify(token, process.env.JWT_SECRET_WORKER)
+        const user = jwt.verify(token, process.env.JWT_SECRET_TOKEN)
 
         if(user.role !== 'worker'){
             throw new Error('Forbidden')

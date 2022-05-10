@@ -10,8 +10,9 @@ const router = new Router();
 
 //Admin
 //Admin ska kunna skapa nya konton och kunna radera resurser.
-router.post('/authenticate', AuthController.authenticate) //Login
-router.post('/createuser', Auth.admin, UserController.create);
+router.post('/authenticate', AuthController.authenticate) //Login - FUNGERAR!!!!
+router.get('/me', Auth.admin, UserController.getMe)
+router.post('/createuser', Auth.admin, UserController.create); //invalid token
 
 //Worker
 //Arbetare ( worker ) ska kunna skapa ärenden kopplade till kunder, 

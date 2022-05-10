@@ -5,7 +5,7 @@ const router = new Router()
 
 //Admin
 //Admin ska kunna skapa nya konton och kunna radera resurser.
-router.delete('/:id',Auth.admin, TaskController.delete) //radera resurser
+router.delete('/:id',Auth.admin, TaskController.delete) //radera resurser - Invalid token
 
 //Worker
 //Arbetare ( worker ) ska kunna skapa ärenden kopplade till kunder, 
