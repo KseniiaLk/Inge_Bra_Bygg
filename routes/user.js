@@ -11,7 +11,7 @@ const router = new Router();
 //Admin
 //Admin ska kunna skapa nya konton och kunna radera resurser.
 router.post('/authenticate', AuthController.authenticate) //Login - FUNGERAR!!!!
-router.get('/me', Auth.admin, UserController.getMe)
+router.get('/me', Auth.admin, UserController.getMe) //invalid token
 router.post('/createuser', Auth.admin, UserController.create); //invalid token
 
 //Worker

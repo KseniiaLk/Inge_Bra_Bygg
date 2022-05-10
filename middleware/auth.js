@@ -27,13 +27,14 @@ module.exports = {
     }
   },
   admin:(req, res, next) => {
-        if(!req.headers.authorization){
-            return res.status(401).json({error: 'Please login in'})
-          }
+        
         try{
+            if(!req.headers.authorization){
+                return res.status(401).json({error: 'Please login in'})
+              }
         const token = req.header("Authorization").replace("Bearer ", "")
         console.log("Token is: ", token)
-        const user = jwt.verify({token}, process.env.JWT_SECRET_TOKEN)
+        const user = jwt.verify(token, process.env.JWT_SECRET_TOKEN)
         console.log("User is: ", user)
         if(user.role !== 'admin'){
             throw new Error('Forbidden')
