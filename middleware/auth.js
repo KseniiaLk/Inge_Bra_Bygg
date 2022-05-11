@@ -1,6 +1,6 @@
 //Kod fråm David, kommer att behöva ändras
 const jwt = require('jsonwebtoken')
-require('dotenv').config({path: '../config/.env'})
+require('dotenv').config({path: './config/.env'})
 
 module.exports = {
   customer: (req, res, next) => {
@@ -33,9 +33,9 @@ module.exports = {
                 return res.status(401).json({error: 'Please login in'})
               }
         const token = req.header("Authorization").replace("Bearer ", "")
-        console.log("Token is: ", token)
-        const user = jwt.verify(token, process.env.JWT_SECRET_TOKEN)
-        console.log("User is: ", user)
+        console.log("Token is: ", token) //skriver ut
+        const user = jwt.verify(token, process.env.JWT_SECRET_TOKEN) //detta körs
+        console.log("User is: ", user) // skriver ut
         if(user.role !== 'admin'){
             throw new Error('Forbidden')
         }
@@ -45,6 +45,7 @@ module.exports = {
         next()
  
     }catch(error){
+        console.log("Error is: ", error)
       if(error instanceof jwt.TokenExpiredError){
         res.status(403).json({error: 'Please login in again'})
       }else{

@@ -1,4 +1,4 @@
-const User = require('../models/User');
+const { User } = require('../models');
 
 module.exports = {
     async getOne(req, res, next){
@@ -26,8 +26,8 @@ module.exports = {
     },
 
     async create(req, res, next){
-        const { username, password_hash } = req.body
-        const user = await User.create({username, password_hash})
+        const { username, user_email, password_hash } = req.body
+        const user = await User.create({username, user_email, password_hash})
         res.status(201).json(user)
     },
 
