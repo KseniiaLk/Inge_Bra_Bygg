@@ -16,8 +16,6 @@ function setupTask(sequelize){
             defaultValue: "Pending",
             allowNull: false,
         },
-        message: DataTypes.TEXT,
-        images: DataTypes.TEXT // Detta måste fixas, bild istället för text
     }, { sequelize} )
 
     return Task

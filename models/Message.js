@@ -12,8 +12,6 @@ function setupMessage(sequelize){
         title: DataTypes.TEXT,
         message: {
             type: DataTypes.TEXT,
-            enum: ["Pending", "Done"],
-            defaultValue: "Pending",
             allowNull: false,
         },
        
