@@ -25,4 +25,4 @@ Task.belongsTo( User, {foreignKey: 'client_id'} )
 Task.hasMany( Message, {foreignKey: 'task_id'})
 Message.belongsTo( Task, {foreignKey: 'task_id'})
 
-module.exports = {User, Task, sequelize}
+module.exports = {User, Task, Message, sequelize}

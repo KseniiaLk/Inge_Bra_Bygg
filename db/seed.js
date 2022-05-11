@@ -3,8 +3,8 @@ const bcrypt = require('bcryptjs')
 
 require('dotenv').config({path: './config/.env'})
 
-const hashUserOne = bcrypt.hashSync(process.env.PASSWORD_ONE, 10) //process.env.PASSWORD_ONE funkar ej
-const hashUserTwo = bcrypt.hashSync(process.env.PASSWORD_TWO, 10) //process.env.PASSWORD_TWO funkar ej
+const hashUserOne = bcrypt.hashSync(process.env.PASSWORD_ONE, 10) 
+const hashUserTwo = bcrypt.hashSync(process.env.PASSWORD_TWO, 10) 
 
 
 sequelize.sync()
