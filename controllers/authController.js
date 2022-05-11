@@ -10,9 +10,10 @@ module.exports = {
 
     if(user && (await bcrypt.compare(req.body.password, user.password_hash))){
 
-      const payload ={
+      const payload = {
         id: user.user_id,
         name: req.body.username,
+        role: "admin"
       }
 
       const token = jwt.sign(payload, process.env.JWT_SECRET_TOKEN)
