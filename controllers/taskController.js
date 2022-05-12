@@ -1,4 +1,4 @@
-const Task = require('../models/Task')
+const { Task } = require('../models/Task')
 
 module.exports = {
     async getOne(req, res, next){
@@ -42,7 +42,7 @@ module.exports = {
     },
 
     async delete(req, res, next){
-        const task = await Task.destroy({where: {id: req.params.id}})
+        const task = await Task.destroy({where: {task_id: req.params.id}})
         res.status(200).json({message: 'Task is deleted'})
     }
 }
