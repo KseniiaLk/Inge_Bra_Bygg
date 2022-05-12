@@ -49,7 +49,7 @@ module.exports = {
     },
 
     async delete(req, res, next){
-        const user = await User.destroy({where: {id: req.params.id}})
+        const user = await User.destroy({where: {user_id: req.params.id}})
         res.status(200).json({message: 'user is deleted'})
     }
 }
