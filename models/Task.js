@@ -9,13 +9,25 @@ function setupTask(sequelize){
             primaryKey: true,
             autoIncrement: true,
         },
-        title: DataTypes.TEXT,
+        title: {
+            type: DataTypes.TEXT,
+            defaultValue: "default task",
+          },
         task_status: {
             type: DataTypes.TEXT,
             enum: ["Pending", "Done"],
             defaultValue: "Pending",
             allowNull: false,
         },
+        customer_id: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+          },
+          worker_id: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+          }
+        
     }, { sequelize} )
 
     return Task

@@ -19,10 +19,10 @@ Task.belongsTo( User, {
     foreignKey: 'worker_id'
 }) //med en foregin key
 
-User.hasMany( Task, {foreignKey: 'client_id'} )
-Task.belongsTo( User, {foreignKey: 'client_id'} )
+User.hasMany( Task, {foreignKey: 'user_id'} )
+Task.belongsTo( User, {foreignKey: 'user_id'} )
 
-Task.hasMany( Message, {foreignKey: 'task_id'})
-Message.belongsTo( Task, {foreignKey: 'task_id'})
+Message.belongsTo(User, {foreignKey: 'user_id'}); 
+Message.belongsTo(Task, {foreignKey: 'task_id'});
 
 module.exports = {User, Task, Message, sequelize}
