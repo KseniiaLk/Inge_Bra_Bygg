@@ -9,11 +9,23 @@ function setupMessage(sequelize){
             primaryKey: true,
             autoIncrement: true,
         },
-        title: DataTypes.TEXT,
         message: {
             type: DataTypes.TEXT,
             allowNull: false,
         },
+        task_id: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+          },
+          user_id: {
+            type: DataTypes.INTEGER,
+            primaryKey: true,
+            autoIncrement: true,
+        },
+        image: {
+            type: DataTypes.STRING,
+            defaultValue: "no image",
+          },
        
     }, { sequelize} )
 
