@@ -1,6 +1,6 @@
 const express = require('express');
 const routes = require ("./routes");
-const Auth = require('../middleware/auth');
+//const Auth = require('../middleware/auth'); - behövs detta här??
 
 
 const app = express();

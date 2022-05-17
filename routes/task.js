@@ -10,7 +10,7 @@ router.delete('/:id',Auth.admin, TaskController.delete) //radera resurser - Inva
 //Worker
 //Arbetare ( worker ) ska kunna skapa ärenden kopplade till kunder, 
 //skriva meddelanden på ärenden, ladda upp en bild kopplat till ärendet och markera ärenden som klart.
-router.post('/:id',Auth.worker, TaskController.create) //skapa ärenden
+router.post('/createtask',Auth.worker, TaskController.create) //skapa ärenden -får "Invalid token"
 router.patch('/:id',Auth.worker, TaskController.update) //markera task som klart
 
 //Customer
