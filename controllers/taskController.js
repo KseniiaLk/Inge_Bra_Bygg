@@ -20,8 +20,8 @@ module.exports = {
     },
 
     async create(req, res, next){
-        const { message, images } = req.body
-        const task = await Task.create({message, images})
+        const { title, task_status, customer_id, worker_id } = req.body
+        const task = await Task.create({title, task_status, customer_id, worker_id})
         res.status(201).json(task)
     },
 
