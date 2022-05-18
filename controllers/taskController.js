@@ -1,4 +1,4 @@
-const { Task } = require('../models/Task')
+const { Task } = require('../models')
 
 module.exports = {
     async getOne(req, res, next){

@@ -13,7 +13,7 @@ module.exports = {
       const payload = {
         id: user.user_id,
         name: req.body.username,
-        role: "admin"
+        role: user.role
       }
 
       const token = jwt.sign(payload, process.env.JWT_SECRET_TOKEN)
