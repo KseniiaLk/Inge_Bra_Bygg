@@ -60,6 +60,7 @@ module.exports = {
     try{
         const token = req.header("Authorization").replace("Bearer ", "")
         const user = jwt.verify(token, process.env.JWT_SECRET_TOKEN)
+        console.log("User is: ", user)
 
         if(user.role !== 'worker'){
             throw new Error('Forbidden')
@@ -70,6 +71,7 @@ module.exports = {
         next()
       
     }catch(error){
+      console.log("Error is: ", error)
       if(error instanceof jwt.TokenExpiredError){
         res.status(403).json({error: 'Please login in again'})
       }else{
