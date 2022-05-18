@@ -20,8 +20,8 @@ module.exports = {
     },
 
     async getMe(req, res, next){
-        //const id = req.params.id
-        const user = await User.findOne({where: {user_id: req.params.id}})
+        const id = req.user.id
+        const user = await User.findOne({where: {user_id: id}})
         res.json(user)
     },
 
