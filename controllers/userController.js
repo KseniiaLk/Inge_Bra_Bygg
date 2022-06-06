@@ -22,6 +22,7 @@ module.exports = {
     async getMe(req, res, next){
         const id = req.user.id
         const user = await User.findOne({where: {user_id: id}})
+        console.log("User is: " + user)
         res.json(user)
     },
 
