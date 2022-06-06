@@ -11,11 +11,11 @@ router.delete('/:id',Auth.admin, TaskController.delete) // FUNKAR!!!
 //Arbetare ( worker ) ska kunna skapa ärenden kopplade till kunder, 
 //skriva meddelanden på ärenden, ladda upp en bild kopplat till ärendet och markera ärenden som klart.
 router.post('/createtask',Auth.worker, TaskController.create) //FUNKAR!!!
-router.patch('/:id',Auth.worker, TaskController.update) //markera task som klart
+router.patch('/:id',Auth.worker, TaskController.update) //FUNKAR!!!
 
 //Customer
 //Kunder (client) ska kunna se sina ärenden och skriva meddelanden på sina ärenden.
-router.get('/', Auth.customer, TaskController.getAll) // getAll ska inte fungera för customers
+router.get('/', Auth.customer, TaskController.getAll) // Should work, NEEDS TESTING!
 router.patch('/:id',Auth.customer, TaskController.update) //skriva meddelanden på ärenden
 
 //Alla endpoints

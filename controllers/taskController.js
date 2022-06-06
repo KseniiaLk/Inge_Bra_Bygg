@@ -15,7 +15,7 @@ module.exports = {
     },
 
     async getAll(req, res, next){
-        const tasks = await Task.findAll()
+        const tasks = await Task.findAll({where: {customer_id : req.user.id}})
         res.json(tasks)
     },
 
@@ -27,13 +27,14 @@ module.exports = {
 
     async update(req, res, next){
         try{
-            const task = await Task.findOne({where:{id: req.params.id}})
-            const { message, images } = req.body
+            const task = await Task.findOne({where:{task_id: req.params.id}})
+            const { message, images, task_status } = req.body
             if(!task){
                 res.status(404).json()
             }
             task.message = message
             task.images = images
+            task.task_status = task_status
             task.save()
             res.json(task)
         }catch(error){
