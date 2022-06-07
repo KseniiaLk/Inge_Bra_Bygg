@@ -12,7 +12,7 @@ module.exports = {
 
       const payload = {
         id: user.user_id,
-        name: req.body.username,
+        name: user.username,
         role: user.role
       }
 

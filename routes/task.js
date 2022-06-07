@@ -25,9 +25,11 @@ router.post('/:id',Auth.user,TaskController.createTask)
 router.patch('/:id',Auth.user, TaskController.updateTask)
 router.delete('/:id',Auth.user, TaskController.deleteTask)
 
-router.get('/:id/message', Auth.user, TaskController.getMessages)
-router.post('/:id/message', Auth.user, TaskController.createMessage)
-router.patch('/:id/:messageId',Auth.user, TaskController.updateMessage)
-*/
+/* WORKING WITH THESE RIGHT NOW */
+
+//router.get('/:id/message', Auth.user, TaskController.getMessages)
+router.post('/:id/messages', Auth.worker, TaskController.createMessage) //FUNKAR!!!
+router.patch('/:id/messages',Auth.worker, TaskController.updateMessage) //FUNKAR!!!
+
 
 module.exports = router

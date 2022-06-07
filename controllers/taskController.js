@@ -1,4 +1,4 @@
-const { Task } = require('../models')
+const { Task, Message } = require('../models')
 
 module.exports = {
     async getOne(req, res, next){
@@ -45,5 +45,31 @@ module.exports = {
     async delete(req, res, next){
         const task = await Task.destroy({where: {task_id: req.params.id}})
         res.status(200).json({message: 'Task is deleted'})
+    },
+
+    async createMessage(req, res, next){
+        const { message, user_id, image} = req.body
+        const task_id = req.params.id
+        const msg = await Message.create({message, task_id, user_id, image})
+        res.status(201).json(msg)
+    },
+
+    async updateMessage(req, res, next){
+        const msg = await Message.findOne({where: {task_id: req.params.id}})
+        const { message, user_id, image} = req.body
+        if(!msg){
+            res.status(404).json()
+        }
+            msg.message = message
+            msg.user_id = user_id
+            msg.image = image
+            msg.save()
+            res.json(msg)
     }
 }
+
+/*
+router.get('/:id/message', Auth.user, TaskController.getMessages)
+router.post('/:id/message', Auth.user, TaskController.createMessage)
+router.patch('/:id/:messageId',Auth.user, TaskController.updateMessage)
+*/
