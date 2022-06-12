@@ -5,12 +5,17 @@ const routes = require ("./routes");
 
 const app = express();
 
+// enable files upload
+app.use(fileUpload({
+    createParentPath: true
+}));
+
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
 app.use("/api/user", routes.user);
 app.use("/api/tasks",routes.tasks);
-app.use("api/image",routes.image);
+app.use("/api/image",routes.image);
 
 app.listen(3000,function(){
     console.log("Server is running..")
