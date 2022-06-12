@@ -17,8 +17,12 @@ module.exports = {
         },
         
         async upload(req, res, next){
-          fs.copyFileSync(req.files.image.tempFilePath, path.join('public','images', req.files.image.name))
-          res.json({message: 'Image uploaded'})
+          try{
+            fs.copyFileSync(req.files.image.tempFilePath, path.join('public','images', req.files.image.name))
+            res.json({message: 'Image uploaded'})
+          }catch(error){
+              next(error)
+          }
         },
       
 }
