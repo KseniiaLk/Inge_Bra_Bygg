@@ -28,12 +28,12 @@ module.exports = {
     async update(req, res, next){
         try{
             const task = await Task.findOne({where:{task_id: req.params.id}})
-            const { message, images, task_status } = req.body
+            const { message, task_status } = req.body //images
             if(!task){
                 res.status(404).json()
             }
             task.message = message
-            task.images = images
+            //task.image = images
             task.task_status = task_status
             task.save()
             res.json(task)

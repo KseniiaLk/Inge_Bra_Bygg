@@ -31,14 +31,16 @@ sequelize.sync()
                 message: 'Alex test',
                 images: 'Test image här',
                 worker_id: users[0].user_id,
-                customer_id: users[1].user_id
+                customer_id: users[1].user_id,
+                image: "none",
             },
             {
                 title: "Ksenias TASK",
                 message: 'Ksenias test message',
                 images: 'Test image här',
                 worker_id: users[1].user_id,
-                customer_id: users[0].user_id
+                customer_id: users[0].user_id,
+                image: "none",
             }
         ])
 }, {sequelize}).catch(console.log)

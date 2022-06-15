@@ -26,7 +26,10 @@ function setupTask(sequelize){
           worker_id: {
             type: DataTypes.INTEGER,
             allowNull: false,
-          }
+          },
+          image: {
+            type: DataTypes.TEXT,
+          },
         
     }, { sequelize} )
 

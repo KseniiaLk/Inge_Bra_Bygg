@@ -8,4 +8,5 @@ router.get('/', Auth.admin, ImageController.getAll) //WORKS!!!!!
 router.post('/upload', Auth.admin, ImageController.upload) //WORKING
 
 
+
 module.exports = router
