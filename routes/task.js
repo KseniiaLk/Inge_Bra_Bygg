@@ -1,5 +1,6 @@
 const { Router } = require('express')
 const TaskController = require('../controllers/taskController')
+const ImageController = require('../controllers/imgController')
 const Auth = require('../middleware/auth');
 const router = new Router()
 
@@ -18,6 +19,7 @@ router.patch('/:id',Auth.worker, TaskController.update) //FUNKAR!!!
 router.get('/', Auth.customer, TaskController.getAll) // Should work, NEEDS TESTING!
 router.patch('/:id',Auth.customer, TaskController.update) //skriva meddelanden på ärenden
 
+router.post('/:id/images', Auth.admin, ImageController.upload) 
 //Alla endpoints
 /*
 router.get('/', Auth.user,TaskController.getTasks) //komma åt oavsett vilken roll man har, vara INLOGGAD!!

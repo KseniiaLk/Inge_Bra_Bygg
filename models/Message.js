@@ -20,10 +20,6 @@ function setupMessage(sequelize){
           user_id: {
             type: DataTypes.INTEGER,
         },
-        image: {
-            type: DataTypes.TEXT,
-            defaultValue: "no image",
-          },
        
     }, { sequelize} )
 
